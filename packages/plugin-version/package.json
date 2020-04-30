@@ -10,7 +10,8 @@
     "ink": "^2.3.0",
     "react": "^16.8.4",
     "semver": "^7.1.2",
-    "yup": "^0.27.0"
+    "yup": "^0.27.0",
+    "snyk": "^1.316.1"
   },
   "peerDependencies": {
     "@yarnpkg/cli": "^2.0.0-rc.31",
@@ -31,7 +32,9 @@
     "build:plugin-version": "builder build plugin",
     "update-local": "yarn build:plugin-version && rsync -a --delete bundles/ bin/",
     "postpack": "rm -rf lib",
-    "prepack": "run build:compile \"$(pwd)\""
+    "prepack": "run build:compile \"$(pwd)\"",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -43,5 +46,6 @@
   },
   "files": [
     "/lib/**/*"
-  ]
+  ],
+  "snyk": true
 }
