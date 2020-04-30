@@ -12,7 +12,8 @@
     "inquirer": "^6.2.0",
     "lodash": "^4.17.15",
     "node-emoji": "^1.8.1",
-    "tau-prolog": "^0.2.66"
+    "tau-prolog": "^0.2.66",
+    "snyk": "^1.316.1"
   },
   "peerDependencies": {
     "@yarnpkg/cli": "^2.0.0-rc.31",
@@ -30,7 +31,9 @@
     "build:plugin-constraints": "builder build plugin",
     "update-local": "yarn build:plugin-constraints && rsync -a --delete bundles/ bin/",
     "postpack": "rm -rf lib",
-    "prepack": "run build:compile \"$(pwd)\""
+    "prepack": "run build:compile \"$(pwd)\"",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "publishConfig": {
     "main": "./lib/index.js",
@@ -38,5 +41,6 @@
   },
   "files": [
     "/lib/**/*"
-  ]
+  ],
+  "snyk": true
 }
