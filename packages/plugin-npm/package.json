@@ -5,7 +5,8 @@
   "dependencies": {
     "@yarnpkg/fslib": "workspace:^2.0.0-rc.17",
     "inquirer": "^6.2.0",
-    "semver": "^7.1.2"
+    "semver": "^7.1.2",
+    "snyk": "^1.316.1"
   },
   "peerDependencies": {
     "@yarnpkg/core": "^2.0.0-rc.25"
@@ -21,7 +22,9 @@
   },
   "scripts": {
     "postpack": "rm -rf lib",
-    "prepack": "run build:compile \"$(pwd)\""
+    "prepack": "run build:compile \"$(pwd)\"",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "publishConfig": {
     "main": "./lib/index.js",
@@ -29,5 +32,6 @@
   },
   "files": [
     "/lib/**/*"
-  ]
+  ],
+  "snyk": true
 }
